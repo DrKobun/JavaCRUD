@@ -47,6 +47,15 @@
                 <input type="number" name="idade" id="idade">
             </div>
             
+            <div>
+                <label for="idade">CPF</label>
+                <input type="text" name="cpf" id="cpf">
+            </div>
+            
+            <div>
+                <label for="idade">Data Nascimento</label>
+                <input type="text" name="dataNascimento" id="dataNascimento">
+            </div>
             <button type="submit">Cadastrar</button>
         </form>
     </body>

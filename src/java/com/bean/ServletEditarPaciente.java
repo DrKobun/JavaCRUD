@@ -18,6 +18,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.sql.Date;
 
 /**
  *
@@ -42,15 +43,27 @@ public class ServletEditarPaciente extends HttpServlet {
             int codigo = Integer.parseInt(String.valueOf(request.getParameter("codigo")));
             String nome = request.getParameter("nome");
             int idade = Integer.parseInt(String.valueOf(request.getParameter("idade")));
-            
+            String cpf = request.getParameter("cpf");
+            //String dataNascimento = request.getParameter("dataNascimento");
+            String dataNascimentoStr = request.getParameter("dataNascimento");
+            Date dataNascimento = Date.valueOf(dataNascimentoStr);
+
+            System.out.println("EDITAR PACIENTE: " + cpf);
             Paciente paciente = new Paciente();
             paciente.setCodigo(codigo);
             paciente.setNome(nome);
             paciente.setIdade(idade);
-            
+            paciente.setCpf(cpf);
+            paciente.setDataNascimento(dataNascimento);
+
+            System.out.println("EDITAR NOME: " + nome);
+            System.out.println("EDITAR IDADE: " + idade);
+            System.out.println("EDITAR CPF:" + cpf);
+            System.out.println("EDITAR DATA NASCIMENTO: " + dataNascimento);
+
             PacienteDAO pacienteDAO = new PacienteDAO();
             pacienteDAO.alterar(paciente);
-            
+
             request.getRequestDispatcher("indexPaciente.jsp").forward(request, response);
         }
     }

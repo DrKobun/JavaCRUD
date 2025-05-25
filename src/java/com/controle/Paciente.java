@@ -4,17 +4,55 @@
  */
 package com.controle;
 
+import java.util.Date;
+
 /**
  *
  * @author laboratorio
  */
 public class Paciente {
-    
+
     private int codigo;
     private String nome;
     private int idade;
     private int idUsuario;
     private String dataPaciente;
+    private String cpf;
+    private java.sql.Date dataNascimento;
+
+    public java.sql.Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(java.sql.Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    
+    
+   public String getDataNascimentoFormatada() {
+    if (dataNascimento != null) {
+        return new java.text.SimpleDateFormat("yyyy-MM-dd").format(dataNascimento);
+    }
+    return "";
+}
+
+//    private String dataNascimento;
+//
+//    public String getDataNascimento() {
+//        return dataNascimento;
+//    }
+//
+//    public void setDataNascimento(String dataNascimento) {
+//        this.dataNascimento = dataNascimento;
+//    }
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -55,10 +93,5 @@ public class Paciente {
     public void setDataPaciente(String dataPaciente) {
         this.dataPaciente = dataPaciente;
     }
-    
-    
-    
-    
-    
-    
+
 }

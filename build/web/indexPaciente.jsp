@@ -95,6 +95,8 @@
                         <th scope="col">Paciente <i class="fas fa-rss"></i></th>
                         <th scope="col" class="text-center">Idade <i class="fas fa-hand-holding-usd"></i></th>
                         <th scope="col" class="text-center">Data <i class="far fa-calendar-alt"></i></th>
+                        <th scope="col" class="text-center">CPF <i class="fas fa-form"></i></th>
+                        <th scope="col" class="text-center">Data Nascimento <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Editar <i class="fas fa-edit"></i></th>
                     </tr>
                 </thead>
@@ -114,6 +116,9 @@
                     <td class="align-middle"><%=paciente.getNome()%></td>
                     <td class="text-center align-middle"><%=paciente.getIdade()%></td>
                     <td class="text-center align-middle"><%=paciente.getDataPaciente()%></td>
+                    <td class="text-center align-middle"><%=paciente.getCpf()%></td>
+                    <td class="text-center align-middle"><%=paciente.getDataNascimentoFormatada()%></td>
+
 
                     <td class="text-center align-middle">
                         <% if (String.valueOf(paciente.getIdUsuario()).equals(idUsuarioLogado)) {%>
@@ -162,12 +167,22 @@
                         <form method="POST" action="ServletEditarPaciente">
                             <div class="form-group mt-3">
                                 <label for="nome">Nome</label>
-                                <input class="form-control" name="nome" rows="10" id="nome"></input>
+                                <input class="form-control" name="nome" id="nome"></input>
                             </div>
 
                             <div class="form-group mt-3">
                                 <label for="idade">Idade</label>
                                 <input class="form-control" type="number" name="idade" id="idade">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="cpf">CPF</label>
+                                <input class="form-control" type="text" name="cpf" id="cpf">
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="dataNascimento">Data de nascimento</label>
+                                <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">
                             </div>
 
                             <div class="form-group">
@@ -218,7 +233,15 @@
                                 <input class="form-control" type="number" name="idade" id="idade">
                             </div>
 
+                            <div class="form-group mt-3">
+                                <label for="cpf">CPF</label>
+                                <input class="form-control" type="text" name="cpf" id="cpf">
+                            </div>
 
+                            <div class="form-group mt-3">
+                                <label for="dataNascimento">Data de nascimento</label>
+                                <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">
+                            </div>
                             <div class="form-group mt-5 d-flex justify-content-end">
                                 <a href="#" class="btn-close text-dark mr-3 mt-2" data-dismiss="modal">
                                     Fechar
@@ -275,14 +298,21 @@
                                function editarPaciente(element, codigo) {
                                    const tr = $(element).closest("tr");
 
-                                   const nome = $(tr).find("td")[0];
-                                   const valor = $(tr).find("td")[1];
+                                   const nome = $(tr).find("td")[0].innerText;
+                                   const idade = $(tr).find("td")[1].innerText;
+                                   const cpf = $(tr).find("td")[3].innerText;
+                                   const dataNascTexto = $(tr).find("td")[4].innerText;
 
-                                   $("#codigo").val(codigo);
-                                   $("#nome").val(nome.innerText);
-                                   $("#idade").val(valor.innerText);
 
-                                   $("#modalEditar").modal("show");
-                               }
+                                   
+
+                                               $("#codigo").val(codigo);
+                                               $("#nome").val(nome);
+                                               $("#idade").val(idade);
+                                               $("#cpf").val(cpf);
+                                               $("#dataNascimento").val(dataNascTexto);
+
+                                               $("#modalEditar").modal("show");
+                                           }
     </script>
 </html>
