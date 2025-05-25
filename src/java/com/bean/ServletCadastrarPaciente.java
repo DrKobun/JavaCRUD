@@ -33,8 +33,7 @@ public class ServletCadastrarPaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
+
             int idUsuario = Integer.parseInt(String.valueOf(request.getParameter("idUsuario")));
             String nome = request.getParameter("nome");
             int idade = Integer.parseInt(String.valueOf(request.getParameter("idade")));
@@ -42,21 +41,23 @@ public class ServletCadastrarPaciente extends HttpServlet {
 //            String dataNascimento = request.getParameter("dataNascimento");
             String dataNascimentoStr = request.getParameter("dataNascimento");
             Date dataNascimento = Date.valueOf(dataNascimentoStr);
-
+            String telefone = request.getParameter("telefone");
 
             System.out.println("ID DO USUÁRIO: " + idUsuario);
             System.out.println("NOME:  " + nome);
             System.out.println("IDADE: " + idade);
             System.out.println("CPF: " + cpf);
             System.out.println("DATA NASCIMENTO: " + dataNascimento);
+            System.out.println("TELEFONE: " + telefone);
 
             Paciente paciente = new Paciente();
-            
+
             paciente.setIdUsuario(idUsuario);
             paciente.setNome(nome);
             paciente.setIdade(idade);
             paciente.setCpf(cpf);
             paciente.setDataNascimento(dataNascimento);
+            paciente.setTelefone(telefone);
 //            out.println("<h1>" + noticia.getIdUsuario() +"</h1>");
 //            out.println("<h1>" + noticia.getNoticia() +"</h1>");
 //            out.println("<h1>" + noticia.getValor() +"</h1>");

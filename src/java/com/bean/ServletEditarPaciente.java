@@ -47,7 +47,9 @@ public class ServletEditarPaciente extends HttpServlet {
             //String dataNascimento = request.getParameter("dataNascimento");
             String dataNascimentoStr = request.getParameter("dataNascimento");
             Date dataNascimento = Date.valueOf(dataNascimentoStr);
-
+            String telefone = request.getParameter("telefone");
+            
+            
             System.out.println("EDITAR PACIENTE: " + cpf);
             Paciente paciente = new Paciente();
             paciente.setCodigo(codigo);
@@ -55,11 +57,13 @@ public class ServletEditarPaciente extends HttpServlet {
             paciente.setIdade(idade);
             paciente.setCpf(cpf);
             paciente.setDataNascimento(dataNascimento);
+            paciente.setTelefone(telefone);
 
             System.out.println("EDITAR NOME: " + nome);
             System.out.println("EDITAR IDADE: " + idade);
             System.out.println("EDITAR CPF:" + cpf);
             System.out.println("EDITAR DATA NASCIMENTO: " + dataNascimento);
+            System.out.println("EDITAR DATA TELEFONE: " + telefone);
 
             PacienteDAO pacienteDAO = new PacienteDAO();
             pacienteDAO.alterar(paciente);

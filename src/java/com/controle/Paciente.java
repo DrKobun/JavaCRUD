@@ -19,7 +19,18 @@ public class Paciente {
     private String dataPaciente;
     private String cpf;
     private java.sql.Date dataNascimento;
+    private String telefone;
 
+    
+    
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    
     public java.sql.Date getDataNascimento() {
         return dataNascimento;
     }
@@ -28,14 +39,12 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
-    
-    
-   public String getDataNascimentoFormatada() {
-    if (dataNascimento != null) {
-        return new java.text.SimpleDateFormat("yyyy-MM-dd").format(dataNascimento);
+    public String getDataNascimentoFormatada() {
+        if (dataNascimento != null) {
+            return new java.text.SimpleDateFormat("yyyy-MM-dd").format(dataNascimento);
+        }
+        return "";
     }
-    return "";
-}
 
 //    private String dataNascimento;
 //

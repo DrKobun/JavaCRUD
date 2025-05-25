@@ -18,7 +18,7 @@ public class PacienteDAO extends DAO{
     public void inserir(Paciente paciente) {
         try {
             abrirBanco();
-            String query = "INSERT INTO paciente(nome, idUsuario, idade, dataPaciente, cpf, dataNascimento) VALUES(?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO paciente(nome, idUsuario, idade, dataPaciente, cpf, dataNascimento, telefone) VALUES(?, ?, ?, ?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
             pst.setString(1, paciente.getNome());
             pst.setInt(2, paciente.getIdUsuario());
@@ -26,6 +26,7 @@ public class PacienteDAO extends DAO{
             pst.setDate(4, new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
             pst.setString(5, paciente.getCpf());
             pst.setDate(6, paciente.getDataNascimento());
+            pst.setString(7, paciente.getTelefone());
             
             pst.execute();
             fecharBanco();
@@ -38,7 +39,7 @@ public class PacienteDAO extends DAO{
         ArrayList listaPaciente = new ArrayList<Paciente>();
         try {
             abrirBanco();
-            String query = "SELECT id, nome, idade, idUsuario, cpf, dataNascimento , DATE_FORMAT(dataPaciente, '%d/%m/%Y') AS dataPaciente FROM paciente ORDER BY (id) DESC";
+            String query = "SELECT id, nome, idade, idUsuario, cpf, dataNascimento , DATE_FORMAT(dataPaciente, '%d/%m/%Y') AS dataPaciente, telefone FROM paciente ORDER BY (id) DESC";
             pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             Paciente paciente;
@@ -51,6 +52,7 @@ public class PacienteDAO extends DAO{
                 paciente.setDataPaciente(rs.getString("dataPaciente"));
                 paciente.setCpf(rs.getString("cpf"));
                 paciente.setDataNascimento(rs.getDate("dataNascimento"));
+                paciente.setTelefone(rs.getString("telefone"));
                 listaPaciente.add(paciente);
             }
             fecharBanco();
@@ -77,13 +79,14 @@ public class PacienteDAO extends DAO{
     public void alterar(Paciente paciente) {
         try {
             abrirBanco();
-            String query = "UPDATE paciente SET nome = ?, idade = ?, cpf = ?, dataNascimento = ? WHERE id = ?";
+            String query = "UPDATE paciente SET nome = ?, idade = ?, cpf = ?, dataNascimento = ?, telefone = ? WHERE id = ?";
             pst = con.prepareStatement(query);
             pst.setString(1, paciente.getNome());
             pst.setInt(2, paciente.getIdade());
             pst.setString(3, paciente.getCpf());
             pst.setString(4, paciente.getDataNascimentoFormatada());
-            pst.setInt(5, paciente.getCodigo());
+            pst.setString(5, paciente.getTelefone());
+            pst.setInt(6, paciente.getCodigo());
             pst.executeUpdate();
             fecharBanco();
 
@@ -107,6 +110,7 @@ public class PacienteDAO extends DAO{
                 paciente.setIdUsuario(rs.getInt("idUsuario"));
                 paciente.setDataPaciente(rs.getString("dataPaciente"));
                 paciente.setCpf(rs.getString("cpf"));
+                paciente.setTelefone(rs.getString("telefone"));
                 paciente.setDataNascimento(rs.getDate("dataNascimento"));
                 return paciente;
             }

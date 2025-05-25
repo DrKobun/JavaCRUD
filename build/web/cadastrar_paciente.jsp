@@ -53,6 +53,11 @@
             </div>
             
             <div>
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" id="telefone">
+            </div>
+            
+            <div>
                 <label for="idade">Data Nascimento</label>
                 <input type="text" name="dataNascimento" id="dataNascimento">
             </div>

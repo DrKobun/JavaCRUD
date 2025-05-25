@@ -97,6 +97,7 @@
                         <th scope="col" class="text-center">Data <i class="far fa-calendar-alt"></i></th>
                         <th scope="col" class="text-center">CPF <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Data Nascimento <i class="fas fa-form"></i></th>
+                        <th scope="col" class="text-center">Telefone <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Editar <i class="fas fa-edit"></i></th>
                     </tr>
                 </thead>
@@ -118,7 +119,8 @@
                     <td class="text-center align-middle"><%=paciente.getDataPaciente()%></td>
                     <td class="text-center align-middle"><%=paciente.getCpf()%></td>
                     <td class="text-center align-middle"><%=paciente.getDataNascimentoFormatada()%></td>
-
+                    <td class="text-center align-middle"><%=paciente.getTelefone()%></td>
+                    <td class="text-center align-middle"><a href="">OMG!!!</a></td>
 
                     <td class="text-center align-middle">
                         <% if (String.valueOf(paciente.getIdUsuario()).equals(idUsuarioLogado)) {%>
@@ -181,6 +183,11 @@
                             </div>
 
                             <div class="form-group mt-3">
+                                <label for="telefone">Telefone</label>
+                                <input class="form-control" type="text" name="telefone" id="telefone">
+                            </div>
+                            
+                            <div class="form-group mt-3">
                                 <label for="dataNascimento">Data de nascimento</label>
                                 <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">
                             </div>
@@ -238,6 +245,11 @@
                                 <input class="form-control" type="text" name="cpf" id="cpf">
                             </div>
 
+                            <div class="form-group mt-3">
+                                <label for="telefone">Telefone</label>
+                                <input class="form-control" type="text" name="telefone" id="telefone">
+                            </div>
+                                
                             <div class="form-group mt-3">
                                 <label for="dataNascimento">Data de nascimento</label>
                                 <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">
@@ -302,17 +314,18 @@
                                    const idade = $(tr).find("td")[1].innerText;
                                    const cpf = $(tr).find("td")[3].innerText;
                                    const dataNascTexto = $(tr).find("td")[4].innerText;
+                                   const telefone = $(tr).find("td")[5].innerText;
 
 
-                                   
 
-                                               $("#codigo").val(codigo);
-                                               $("#nome").val(nome);
-                                               $("#idade").val(idade);
-                                               $("#cpf").val(cpf);
-                                               $("#dataNascimento").val(dataNascTexto);
+                                   $("#codigo").val(codigo);
+                                   $("#nome").val(nome);
+                                   $("#idade").val(idade);
+                                   $("#cpf").val(cpf);
+                                   $("#dataNascimento").val(dataNascTexto);
+                                   $("#telefone").val(telefone);
 
-                                               $("#modalEditar").modal("show");
-                                           }
+                                   $("#modalEditar").modal("show");
+                               }
     </script>
 </html>
