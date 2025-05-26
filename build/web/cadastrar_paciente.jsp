@@ -19,7 +19,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-           <title>Portal de Notícias - Cadastro Notícia</title>
+           <title>Cadatro de Pacientes</title>
 
         <style>
             textarea {

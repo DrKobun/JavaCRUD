@@ -98,6 +98,7 @@
                         <th scope="col" class="text-center">CPF <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Data Nascimento <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Telefone <i class="fas fa-form"></i></th>
+                        <th scope="col" class="text-center">Iniciar Triagem <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Editar <i class="fas fa-edit"></i></th>
                     </tr>
                 </thead>
@@ -114,14 +115,25 @@
                 %>
 
                 <tr>
+                    <!--ONDE OS DADOS COMEÇAM LISTADOS-->
                     <td class="align-middle"><%=paciente.getNome()%></td>
                     <td class="text-center align-middle"><%=paciente.getIdade()%></td>
                     <td class="text-center align-middle"><%=paciente.getDataPaciente()%></td>
                     <td class="text-center align-middle"><%=paciente.getCpf()%></td>
                     <td class="text-center align-middle"><%=paciente.getDataNascimentoFormatada()%></td>
                     <td class="text-center align-middle"><%=paciente.getTelefone()%></td>
-                    <td class="text-center align-middle"><a href="">OMG!!!</a></td>
+                    <!--INICIAR TRIAGEM-->
+                    <td class="text-center align-middle">
 
+                        <form action="ServletIniciarAtendimento" method="POST">
+                            <div>
+                                <input type="hidden" value="<%= paciente.getCodigo()%>" name="idUsuario">
+                            </div>
+                            <button type="submit" class="btn btn-light">Iniciar Atendimento</button>
+                        </form>
+                            <h1><%= paciente.getIdUsuario()%></h1>
+                    </td>
+                    <!--FIM TRIAGEM-->
                     <td class="text-center align-middle">
                         <% if (String.valueOf(paciente.getIdUsuario()).equals(idUsuarioLogado)) {%>
                         <a href="#" class="btn btn-light"
@@ -186,7 +198,7 @@
                                 <label for="telefone">Telefone</label>
                                 <input class="form-control" type="text" name="telefone" id="telefone">
                             </div>
-                            
+
                             <div class="form-group mt-3">
                                 <label for="dataNascimento">Data de nascimento</label>
                                 <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">
@@ -249,7 +261,7 @@
                                 <label for="telefone">Telefone</label>
                                 <input class="form-control" type="text" name="telefone" id="telefone">
                             </div>
-                                
+
                             <div class="form-group mt-3">
                                 <label for="dataNascimento">Data de nascimento</label>
                                 <input class="form-control" type="date" name="dataNascimento" id="dataNascimento">

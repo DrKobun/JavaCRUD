@@ -1,28 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.bean;
 
-import com.controle.Login;
-import com.controle.Noticia;
-import com.modelo.LoginDAO;
-import com.modelo.NoticiasDAO;
+import com.controle.Atendimento;
+import com.controle.Triagem;
+import com.modelo.AtendimentoDAO;
+import com.modelo.TriagemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Danilo Miranda
+ * @author laboratorio
  */
-@WebServlet(name = "ServletDeletarNoticia", urlPatterns = {"/ServletDeletarNoticia"})
-public class ServletDeletarNoticia extends HttpServlet {
+public class ServletIniciarAtendimento extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,15 +34,34 @@ public class ServletDeletarNoticia extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int codigo = Integer.parseInt(String.valueOf(request.getParameter("codigo")));
+
+            int idUsuario = Integer.parseInt(String.valueOf(request.getParameter("idUsuario")));
+//            int codigo = Integer.parseInt(String.valueOf(request.getParameter("codigo")));
             
-            Noticia noticia = new Noticia();
-            noticia.setCodigo(codigo);
+
+            System.out.println("ID DO USUÁRIO: " + idUsuario);
+            System.out.println("=========================");
+//          System.out.println("CÓDIGO RESGATADO: " + codigo);
             
-            NoticiasDAO noticiasDAO = new NoticiasDAO();
-            noticiasDAO.deletar(noticia);
             
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            Atendimento atendimento = new Atendimento();
+            atendimento.setIdPaciente(idUsuario);
+            //paciente.setIdUsuario(idUsuario);
+            
+//            out.println("<h1>" + noticia.getIdUsuario() +"</h1>");
+//            out.println("<h1>" + noticia.getNoticia() +"</h1>");
+//            out.println("<h1>" + noticia.getValor() +"</h1>");
+//            out.println("<h1>" + idUsuario + "</h1>");
+//            out.println("<h1>" + noticiaStr + "</h1>");
+//            out.println("<h1>" + valor + "</h1>");
+
+            AtendimentoDAO atendimentoDAO = new AtendimentoDAO();
+            //atendimentoDAO.inserirAtendimento(atendimento);
+            atendimentoDAO.adicionarAtendimentoComTriagem(atendimento);
+            
+            
+            
+            request.getRequestDispatcher("triagem_paciente.jsp").forward(request, response);
         }
     }
 

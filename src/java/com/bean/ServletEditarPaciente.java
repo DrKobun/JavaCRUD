@@ -5,11 +5,7 @@
  */
 package com.bean;
 
-import com.controle.Login;
-import com.controle.Noticia;
 import com.controle.Paciente;
-import com.modelo.LoginDAO;
-import com.modelo.NoticiasDAO;
 import com.modelo.PacienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;

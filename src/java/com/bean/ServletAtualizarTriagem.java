@@ -5,8 +5,8 @@
  */
 package com.bean;
 
-import com.controle.Noticia;
-import com.modelo.NoticiasDAO;
+import com.controle.Triagem;
+import com.modelo.TriagemDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,14 +14,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author Danilo Miranda
  */
-@WebServlet(name = "ServeletDeslogar", urlPatterns = {"/ServeletDeslogar"})
-public class ServeletDeslogar extends HttpServlet {
+@WebServlet(name = "ServletAtualizarTriagem", urlPatterns = {"/ServletAtualizarTriagem"})
+public class ServletAtualizarTriagem extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,9 +35,33 @@ public class ServeletDeslogar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            session.invalidate();
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            int idAtendimento = Integer.parseInt(String.valueOf(request.getParameter("idAtendimento")));
+            //String nomePaciente = request.getParameter("nomePaciente");
+            String pressao = request.getParameter("pressao");
+            double peso = Double.parseDouble(request.getParameter("peso"));
+            double altura = Double.parseDouble(request.getParameter("altura"));
+            String obs = request.getParameter("observacoes");
+            
+            System.out.println("ID PACIENTE: " + idAtendimento);
+            System.out.println("PRESSÃO: " + pressao);
+            System.out.println("PESO: " + peso);
+            System.out.println("ALTURA: " + altura);
+            System.out.println("OBSERVAÇÕES: " + obs);
+            
+            
+            Triagem triagem = new Triagem();
+            triagem.setIdAtendimento(idAtendimento);
+            triagem.setPressao(pressao);
+            triagem.setPeso(peso);
+            triagem.setAltura(altura);
+            triagem.setObservacoes(obs);
+
+            
+
+            TriagemDAO triagemDAO = new TriagemDAO();
+            triagemDAO.alterarTriagem(triagem);
+
+            request.getRequestDispatcher("triagem_paciente.jsp").forward(request, response);
         }
     }
 

@@ -27,6 +27,18 @@
         <servlet-name>ServletDeletarPaciente</servlet-name>
         <servlet-class>com.bean.ServletDeletarPaciente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletCadastrarTriagem</servlet-name>
+        <servlet-class>com.bean.ServletIniciarAtendimento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletIniciarAtendimento</servlet-name>
+        <servlet-class>com.bean.ServletIniciarAtendimento</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAtualizarTriagem</servlet-name>
+        <servlet-class>com.bean.ServletAtualizarTriagem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastroLoginServlet</servlet-name>
         <url-pattern>/CadastroLogin</url-pattern>
@@ -50,6 +62,18 @@
     <servlet-mapping>
         <servlet-name>ServletDeletarPaciente</servlet-name>
         <url-pattern>/ServletDeletarPaciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletCadastrarTriagem</servlet-name>
+        <url-pattern>/ServletCadastrarTriagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletIniciarAtendimento</servlet-name>
+        <url-pattern>/ServletIniciarAtendimento</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAtualizarTriagem</servlet-name>
+        <url-pattern>/ServletAtualizarTriagem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
