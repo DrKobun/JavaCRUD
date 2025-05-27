@@ -121,4 +121,38 @@ public class PacienteDAO extends DAO{
         return null;
     }
     
+    public ArrayList<Paciente> pesquisarPorNome(String nome) {
+    ArrayList<Paciente> lista = new ArrayList<>();
+    try {
+        abrirBanco();
+        String sql = "SELECT * FROM paciente WHERE nome LIKE ?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, "%" + nome + "%");
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            Paciente paciente = new Paciente();
+            // preencha os campos do paciente aqui
+            paciente.setCodigo(rs.getInt("codigo"));
+            paciente.setNome(rs.getString("nome"));
+            paciente.setIdade(rs.getInt("idade"));
+            paciente.setCpf(rs.getString("cpf"));
+            paciente.setDataNascimento(rs.getDate("dataNascimento"));
+            paciente.setTelefone(rs.getString("telefone"));
+            paciente.setDataPaciente(rs.getString("dataPaciente"));
+            paciente.setIdUsuario(rs.getInt("idUsuario"));
+
+            lista.add(paciente);
+        }
+
+        rs.close();
+        ps.close();
+        con.close();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return lista;
+}
+
+    
 }

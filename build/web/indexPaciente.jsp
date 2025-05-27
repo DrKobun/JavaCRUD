@@ -87,6 +87,10 @@
 
             </div>
             <% }%>
+            <form class="form-inline mb-3" method="get" action="">
+                <input class="form-control mr-sm-2" type="search" name="pesquisa" placeholder="Buscar por nome" aria-label="Pesquisar" value="<%= request.getParameter("pesquisa") != null ? request.getParameter("pesquisa") : "" %>">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
 
 
             <table class="table table-striped">
@@ -107,7 +111,15 @@
                     PacienteDAO pacienteDAO = new PacienteDAO();
                     Paciente paciente = new Paciente();
 
-                    ArrayList<Paciente> listaPaciente = pacienteDAO.pesquisarTudo();
+                    //ArrayList<Paciente> listaPaciente = pacienteDAO.pesquisarTudo();
+                    String termoPesquisa = request.getParameter("pesquisa");
+                    ArrayList<Paciente> listaPaciente;
+
+                    if (termoPesquisa != null && !termoPesquisa.trim().isEmpty()) {
+                        listaPaciente = pacienteDAO.pesquisarPorNome(termoPesquisa);
+                    } else {
+                        listaPaciente = pacienteDAO.pesquisarTudo();
+                    }
                     DecimalFormat df = new DecimalFormat("#,##0.00");
 
                     for (int i = 0; i < listaPaciente.size(); i++) {
@@ -131,7 +143,7 @@
                             </div>
                             <button type="submit" class="btn btn-light">Enviar para triagem</button>
                         </form>
-                            
+
                     </td>
                     <!--FIM TRIAGEM-->
                     <td class="text-center align-middle">
