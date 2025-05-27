@@ -73,7 +73,7 @@
             <% if (logado) {%>
             <div class="mt-5 mb-4 d-flex flex-column">
 
-                <p class="alert alert-success" role="alert"> Bem vindo, Paciente!  <strong><%=session.getAttribute("email")%></strong></p>
+                <p class="alert alert-success" role="alert"> Bem vindo!  <strong><%=session.getAttribute("email")%></strong></p>
 
                 <a href="#" data-toggle="modal" data-target="#modalCadastrar"  class="btn btn-primary ml-auto">Cadastrar Paciente</a>
             </div>
@@ -94,7 +94,7 @@
                     <tr>
                         <th scope="col">Paciente <i class="fas fa-rss"></i></th>
                         <th scope="col" class="text-center">Idade <i class="fas fa-hand-holding-usd"></i></th>
-                        <th scope="col" class="text-center">Data <i class="far fa-calendar-alt"></i></th>
+                        <th scope="col" class="text-center">Data Atendimento<i class="far fa-calendar-alt"></i></th>
                         <th scope="col" class="text-center">CPF <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Data Nascimento <i class="fas fa-form"></i></th>
                         <th scope="col" class="text-center">Telefone <i class="fas fa-form"></i></th>
@@ -129,9 +129,9 @@
                             <div>
                                 <input type="hidden" value="<%= paciente.getCodigo()%>" name="idUsuario">
                             </div>
-                            <button type="submit" class="btn btn-light">Iniciar Atendimento</button>
+                            <button type="submit" class="btn btn-light">Enviar para triagem</button>
                         </form>
-                            <h1><%= paciente.getIdUsuario()%></h1>
+                            
                     </td>
                     <!--FIM TRIAGEM-->
                     <td class="text-center align-middle">

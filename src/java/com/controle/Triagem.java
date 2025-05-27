@@ -4,6 +4,8 @@
  */
 package com.controle;
 
+import java.util.Date;
+
 /**
  *
  * @author Wally
@@ -16,6 +18,34 @@ public class Triagem {
     private double peso;
     private double altura;
     private String observacoes;
+    private String telefone;
+    private String cpf;
+    private Date dataNascimento;
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+    
 
     public int getIdAtendimento() {
         return idAtendimento;

@@ -1,26 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.bean;
 
 import com.controle.Triagem;
 import com.modelo.TriagemDAO;
+import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Danilo Miranda
+ * @author Wally
  */
-@WebServlet(name = "ServletAtualizarTriagem", urlPatterns = {"/ServletAtualizarTriagem"})
-public class ServletAtualizarTriagem extends HttpServlet {
+public class ServletDeletarTriagem extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,34 +33,28 @@ public class ServletAtualizarTriagem extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            System.out.println("ServletAtualizarTriagem foi chamado!");
+           
             int idAtendimento = Integer.parseInt(String.valueOf(request.getParameter("idAtendimento")));
-            //String nomePaciente = request.getParameter("nomePaciente");
-            System.out.println("ID PACIENTE: " + idAtendimento);
-            String pressao = request.getParameter("pressao");
-            double peso = Double.parseDouble(request.getParameter("peso"));
-            double altura = Double.parseDouble(request.getParameter("altura"));
-            String obs = request.getParameter("observacoes");
             
-            System.out.println("PRESSÃO: " + pressao);
-            System.out.println("PESO: " + peso);
-            System.out.println("ALTURA: " + altura);
-            System.out.println("OBSERVAÇÕES: " + obs);
+//            Paciente paciente = new Paciente();
+//            paciente.setCodigo(codigo);
+//
+//            PacienteDAO pacienteDAO = new PacienteDAO();
+//            pacienteDAO.deletar(paciente);
+              
+              Triagem triagem = new Triagem();
+              triagem.setIdAtendimento(idAtendimento);
+              
+              
+              TriagemDAO triagemDAO = new TriagemDAO();
+              triagemDAO.deletarTriagem(idAtendimento);
             
-            
-            Triagem triagem = new Triagem();
-            triagem.setIdAtendimento(idAtendimento);
-            triagem.setPressao(pressao);
-            triagem.setPeso(peso);
-            triagem.setAltura(altura);
-            triagem.setObservacoes(obs);
-
-            
-
-            TriagemDAO triagemDAO = new TriagemDAO();
-            triagemDAO.alterarTriagem(triagem);
-
             request.getRequestDispatcher("triagem_paciente.jsp").forward(request, response);
+            
+            
+            
+            
+            
         }
     }
 

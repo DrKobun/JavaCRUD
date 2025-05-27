@@ -39,6 +39,10 @@
         <servlet-name>ServletAtualizarTriagem</servlet-name>
         <servlet-class>com.bean.ServletAtualizarTriagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletDeletarTriagem</servlet-name>
+        <servlet-class>com.bean.ServletDeletarTriagem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastroLoginServlet</servlet-name>
         <url-pattern>/CadastroLogin</url-pattern>
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>ServletAtualizarTriagem</servlet-name>
         <url-pattern>/ServletAtualizarTriagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeletarTriagem</servlet-name>
+        <url-pattern>/ServletDeletarTriagem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
