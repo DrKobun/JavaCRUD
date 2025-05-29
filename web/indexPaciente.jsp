@@ -45,27 +45,25 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
             <div class="container">
-                <a class="navbar-brand" href="loginPaciente.jsp">
-                    <i class="far fa-newspaper fa-2x"></i>
-                </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="#">Clínica</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="indexPaciente.jsp">Cadastro de Paciente</a>
+                        </li>
                         <li class="nav-item active">
-                            <% if (logado) {%>
-                            <a class="nav-link" href="ServeletDeslogarPaciente">Sair</a>
-                            <%} else {%>
-                            <a class="nav-link" href="loginPaciente.jsp">Entrar</a>
-                            <%} %>
+                            <a class="nav-link" href="triagem_paciente.jsp">Triagem <span class="sr-only">(atual)</span></a>
                         </li>
                     </ul>
-                </div> 
+                </div>
             </div>
         </nav>
 
@@ -83,15 +81,15 @@
             <div class="my-4">
                 <div class="alert alert-danger" role="alert">
                     Autentique-se para gerenciar Pacientes !
+                    <a href="loginPaciente.jsp">LOGIN</a>
                 </div>
 
             </div>
             <% }%>
-            <form class="form-inline mb-3" method="get" action="">
+            <form class="form-inline mb-3" method="get" action="indexPaciente.jsp">
                 <input class="form-control mr-sm-2" type="search" name="pesquisa" placeholder="Buscar por nome" aria-label="Pesquisar" value="<%= request.getParameter("pesquisa") != null ? request.getParameter("pesquisa") : "" %>">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
-
 
             <table class="table table-striped">
                 <thead>
@@ -233,7 +231,6 @@
             </div>
         </div>
 
-
         <!-- Modal Cadastrar -->
 
         <div class="modal fade" id="modalCadastrar" tabindex="-1" role="dialog" aria-labelledby="modalCadastrar" aria-hidden="true">
@@ -290,29 +287,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </body>
 
     <!-- Optional JavaScript -->
@@ -339,8 +313,6 @@
                                    const cpf = $(tr).find("td")[3].innerText;
                                    const dataNascTexto = $(tr).find("td")[4].innerText;
                                    const telefone = $(tr).find("td")[5].innerText;
-
-
 
                                    $("#codigo").val(codigo);
                                    $("#nome").val(nome);

@@ -38,7 +38,7 @@ public class ServeletDeslogarPaciente extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             session.invalidate();
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("indexPaciente.jsp").forward(request, response);
         }
     }
 

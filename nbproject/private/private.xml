@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/bean/ServletDeletarPaciente.java</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/bean/ServletDeletarTriagem.java</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/web/triagem_paciente.jsp</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/modelo/AtendimentoDAO.java</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/bean/ServletAtualizarTriagem.java</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/web/indexPaciente.jsp</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/bean/ServletIniciarAtendimento.java</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/modelo/TriagemDAO.java</file>
-            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/WebNoticiasLogin/src/java/com/controle/Triagem.java</file>
+            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/JavaCRUD/src/java/com/bean/ServletLoginPaciente.java</file>
+            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/JavaCRUD/src/java/com/modelo/TriagemDAO.java</file>
+            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/JavaCRUD/web/triagem_paciente.jsp</file>
+            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/JavaCRUD/web/indexPaciente.jsp</file>
+            <file>file:/C:/Users/Wally/Documents/NetBeansProjects/JavaCRUD/src/java/com/modelo/PacienteDAO.java</file>
         </group>
     </open-files>
 </project-private>
