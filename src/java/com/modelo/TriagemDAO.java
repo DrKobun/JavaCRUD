@@ -81,7 +81,7 @@ public class TriagemDAO extends DAO {
             while (rs.next()) {
                 Triagem t = new Triagem();
                 t.setIdAtendimento(rs.getInt("idAtendimento"));
-                t.setNomePaciente(rs.getString("nome")); // você precisa adicionar este campo na classe
+                t.setNomePaciente(rs.getString("nome")); 
                 t.setPressao(rs.getString("pressao"));
                 t.setPeso(rs.getDouble("peso"));
                 t.setAltura(rs.getDouble("altura"));
@@ -122,7 +122,7 @@ public class TriagemDAO extends DAO {
     try {
         abrirBanco();
 
-        // 1. Atualiza a triagem
+       
         String queryUpdate = "UPDATE triagem SET pressao = ?, peso = ?, altura = ?, observacoes = ? WHERE idAtendimento = ?";
         pst = con.prepareStatement(queryUpdate);
         pst.setString(1, triagem.getPressao());
@@ -132,7 +132,7 @@ public class TriagemDAO extends DAO {
         pst.setInt(5, triagem.getIdAtendimento());
         pst.executeUpdate();
 
-        // 2. Recupera o ID da triagem (usando idAtendimento)
+        
         String queryIdTriagem = "SELECT id FROM triagem WHERE idAtendimento = ?";
         pst = con.prepareStatement(queryIdTriagem);
         pst.setInt(1, triagem.getIdAtendimento());
@@ -142,7 +142,7 @@ public class TriagemDAO extends DAO {
             idTriagem = rs.getInt("id");
         }
 
-        // 3. Recupera o nome do paciente (JOIN com atendimento e paciente)
+        
         String queryNome = "SELECT p.nome FROM atendimento a JOIN paciente p ON a.idPaciente = p.id WHERE a.id = ?";
         pst = con.prepareStatement(queryNome);
         pst.setInt(1, triagem.getIdAtendimento());
@@ -152,7 +152,7 @@ public class TriagemDAO extends DAO {
             nomePaciente = rs.getString("nome");
         }
 
-        // 4. Insere na tabela loginpaciente
+      
         String insertLoginPaciente = "INSERT INTO loginpaciente (idTriagem, idAtendimento, nomePaciente, avaliacao, observacoes) VALUES (?, ?, ?, ?, ?)";
         pst = con.prepareStatement(insertLoginPaciente);
         pst.setInt(1, idTriagem);

@@ -95,7 +95,7 @@ public class LoginAvaliacaoDAO extends DAO {
             avaliacao.setAltura(rs.getString("altura"));
             avaliacao.setObservacoes(rs.getString("observacoes"));
 
-            // Prints para debug
+           
             System.out.println("Nome do Paciente: " + avaliacao.getNomePaciente());
             System.out.println("ID do Atendimento: " + avaliacao.getIdAtendimento());
             System.out.println("Pressão: " + avaliacao.getPressao());

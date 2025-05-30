@@ -43,7 +43,7 @@ public class ServletAvaliacaoFinal extends HttpServlet {
             AvaliacaoDAO dao = new AvaliacaoDAO();
             dao.registrarAvaliacao(idAtendimento, avaliacao, observacoes);
 
-            // Redireciona de volta à tela principal com mensagem ou refresh
+            
             response.sendRedirect("lista_atendimentos.jsp");
         }
     }

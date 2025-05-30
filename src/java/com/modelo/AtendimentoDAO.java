@@ -37,20 +37,20 @@ public class AtendimentoDAO extends DAO {
     try {
         abrirBanco();
 
-        // 1. Inserir atendimento
+
         String queryAtendimento = "INSERT INTO atendimento (idPaciente, dataAtendimento, status) VALUES (?, NOW(), 'Aguardando Triagem')";
         pst = con.prepareStatement(queryAtendimento, java.sql.Statement.RETURN_GENERATED_KEYS);
         pst.setInt(1, atendimento.getIdPaciente());
         pst.executeUpdate();
 
-        // 2. Obter o ID do atendimento gerado
+
         ResultSet rs = pst.getGeneratedKeys();
         int idAtendimentoGerado = 0;
         if (rs.next()) {
             idAtendimentoGerado = rs.getInt(1);
         }
 
-        // 3. Inserir triagem com o idAtendimento gerado
+
         String queryTriagem = "INSERT INTO triagem (idAtendimento, pressao, peso, altura, observacoes) VALUES (?, '', 0, 0, '')";
         pst = con.prepareStatement(queryTriagem);
         pst.setInt(1, idAtendimentoGerado);

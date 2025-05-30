@@ -132,7 +132,7 @@ public class PacienteDAO extends DAO{
 
         while (rs.next()) {
             Paciente paciente = new Paciente();
-            // preencha os campos do paciente aqui
+            
             paciente.setCodigo(rs.getInt("codigo"));
             paciente.setNome(rs.getString("nome"));
             paciente.setIdade(rs.getInt("idade"));

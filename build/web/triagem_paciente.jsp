@@ -224,7 +224,7 @@
             </div>
         </div>
 
-        <!-- JS para preencher o modal com dados -->
+        
         <script>
             $('#modalTriagem').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
