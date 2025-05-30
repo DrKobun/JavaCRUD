@@ -99,24 +99,77 @@ public class TriagemDAO extends DAO {
         return listaPaciente;
     }
 
+//    public void alterarTriagem(Triagem triagem) {
+//        try {
+//            abrirBanco();
+//            String query = "UPDATE triagem SET pressao = ?, peso = ?, altura = ?, observacoes = ? WHERE idAtendimento = ?";
+//            pst = con.prepareStatement(query);
+//            pst.setString(1, triagem.getPressao());
+//            pst.setDouble(2, triagem.getPeso());
+//            pst.setDouble(3, triagem.getAltura());
+//            pst.setString(4, triagem.getObservacoes());
+//            pst.setInt(5, triagem.getIdAtendimento());
+//
+//            pst.executeUpdate();
+//            fecharBanco();
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro ALTERAR TRIAGEM: " + e.getMessage());
+//        }
+//    }
+    
     public void alterarTriagem(Triagem triagem) {
-        try {
-            abrirBanco();
-            String query = "UPDATE triagem SET pressao = ?, peso = ?, altura = ?, observacoes = ? WHERE idAtendimento = ?";
-            pst = con.prepareStatement(query);
-            pst.setString(1, triagem.getPressao());
-            pst.setDouble(2, triagem.getPeso());
-            pst.setDouble(3, triagem.getAltura());
-            pst.setString(4, triagem.getObservacoes());
-            pst.setInt(5, triagem.getIdAtendimento());
+    try {
+        abrirBanco();
 
-            pst.executeUpdate();
-            fecharBanco();
+        // 1. Atualiza a triagem
+        String queryUpdate = "UPDATE triagem SET pressao = ?, peso = ?, altura = ?, observacoes = ? WHERE idAtendimento = ?";
+        pst = con.prepareStatement(queryUpdate);
+        pst.setString(1, triagem.getPressao());
+        pst.setDouble(2, triagem.getPeso());
+        pst.setDouble(3, triagem.getAltura());
+        pst.setString(4, triagem.getObservacoes());
+        pst.setInt(5, triagem.getIdAtendimento());
+        pst.executeUpdate();
 
-        } catch (Exception e) {
-            System.out.println("Erro ALTERAR TRIAGEM: " + e.getMessage());
+        // 2. Recupera o ID da triagem (usando idAtendimento)
+        String queryIdTriagem = "SELECT id FROM triagem WHERE idAtendimento = ?";
+        pst = con.prepareStatement(queryIdTriagem);
+        pst.setInt(1, triagem.getIdAtendimento());
+        rs = pst.executeQuery();
+        int idTriagem = 0;
+        if (rs.next()) {
+            idTriagem = rs.getInt("id");
         }
+
+        // 3. Recupera o nome do paciente (JOIN com atendimento e paciente)
+        String queryNome = "SELECT p.nome FROM atendimento a JOIN paciente p ON a.idPaciente = p.id WHERE a.id = ?";
+        pst = con.prepareStatement(queryNome);
+        pst.setInt(1, triagem.getIdAtendimento());
+        rs = pst.executeQuery();
+        String nomePaciente = "";
+        if (rs.next()) {
+            nomePaciente = rs.getString("nome");
+        }
+
+        // 4. Insere na tabela loginpaciente
+        String insertLoginPaciente = "INSERT INTO loginpaciente (idTriagem, idAtendimento, nomePaciente, avaliacao, observacoes) VALUES (?, ?, ?, ?, ?)";
+        pst = con.prepareStatement(insertLoginPaciente);
+        pst.setInt(1, idTriagem);
+        pst.setInt(2, triagem.getIdAtendimento());
+        pst.setString(3, nomePaciente);
+        pst.setInt(4, 0); // Avaliação padrão (0), será preenchida depois pelo paciente
+        pst.setString(5, ""); // Observações inicialmente vazias
+        pst.executeUpdate();
+
+        fecharBanco();
+    } catch (Exception e) {
+        System.out.println("Erro ALTERAR TRIAGEM e INSERIR LOGINPACIENTE: " + e.getMessage());
     }
+}
+
+    
+    
     
     public void deletarTriagem(int idAtendimento) {
     try {

@@ -43,6 +43,14 @@
         <servlet-name>ServletDeletarTriagem</servlet-name>
         <servlet-class>com.bean.ServletDeletarTriagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletLoginAvaliacao</servlet-name>
+        <servlet-class>com.bean.ServletLoginAvaliacao</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAvaliacaoFinal</servlet-name>
+        <servlet-class>com.bean.ServletAvaliacaoFinal</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CadastroLoginServlet</servlet-name>
         <url-pattern>/CadastroLogin</url-pattern>
@@ -82,6 +90,14 @@
     <servlet-mapping>
         <servlet-name>ServletDeletarTriagem</servlet-name>
         <url-pattern>/ServletDeletarTriagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletLoginAvaliacao</servlet-name>
+        <url-pattern>/ServletLoginAvaliacao</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAvaliacaoFinal</servlet-name>
+        <url-pattern>/ServletAvaliacaoFinal</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

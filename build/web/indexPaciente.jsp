@@ -145,7 +145,7 @@
                     </td>
                     <!--FIM TRIAGEM-->
                     <td class="text-center align-middle">
-                        <% if (String.valueOf(paciente.getIdUsuario()).equals(idUsuarioLogado)) {%>
+                       
                         <a href="#" class="btn btn-light"
                            onclick="editarPaciente(this, '<%=paciente.getCodigo()%>')"
                            data-toggle="tooltip" data-placement="top" title="Editar">
@@ -158,12 +158,6 @@
                            data-toggle="tooltip" data-placement="top" title="Apagar">
                             <i class="fas fa-trash-alt"></i>
                         </a>
-                        <%} else {%>
-                        <a href="#" class="btn btn-light"
-                           data-toggle="tooltip" data-placement="top" title="Bloqueado">
-                            <i class="fas fa-ban"></i>
-                        </a>
-                        <% }%>
                     </td>
                     </td>
                 </tr>
